@@ -1,0 +1,29 @@
+﻿@model BugSquash.ViewModels.TicketViewModel
+@{
+    ViewBag.Title = "Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+
+    var className = Model.Ticket.Count > 5 ? "popular" : null;
+}
+
+
+<h2 class="popular">@Model.Ticket</h2>
+
+@if (Model.Ticket.Count == 0)
+{
+    <p>No tickets have been created.</p>
+}
+else
+{
+    <ul>
+
+@foreach (var ticket in Model.Ticket)
+{
+    <li>@ticket.Name</li>
+}
+    </ul>
+}
+
