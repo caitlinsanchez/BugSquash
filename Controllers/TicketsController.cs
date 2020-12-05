@@ -11,21 +11,18 @@ namespace BugSquash.Controllers
     public class TicketsController : Controller
     {
         // GET: Tickets
-        public ActionResult Random()
+        public ActionResult Index()
         {
-            var ticket = new Ticket();
+            var ticket = new List<Ticket>
+            {   new Ticket { Name = "Defect" },
+                new Ticket { Name = "New Feature" },
+                new Ticket { Name = "Training" },
 
-            var ticketTypes = new List<TicketType>
-            {
-                new TicketType { Name = "Defect" },
-                new TicketType { Name = "New Feature"},
-                new TicketType { Name = "Training"}
             };
 
-            var viewModel = new RandomTicketViewModel
+            var viewModel = new TicketViewModel
             {
                 Ticket = ticket,
-                TicketTypes = ticketTypes
             };
             return View(viewModel);
         }

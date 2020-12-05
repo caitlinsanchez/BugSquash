@@ -1,16 +1,17 @@
 ﻿@model BugSquash.ViewModels.TicketViewModel
 @{
-    ViewBag.Title = "Tickets";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@{ 
+
+@{
 
     var className = Model.Ticket.Count > 5 ? "popular" : null;
 }
 
 
-<h2 class="popular">@Model.Ticket</h2>
+@**<h2 class="popular">@Model.Ticket</h2>*@
 
 @if (Model.Ticket.Count == 0)
 {
@@ -20,10 +21,13 @@ else
 {
     <ul>
 
-@foreach (var ticket in Model.Ticket)
-{
-    <li>@ticket.Name</li>
+        @foreach (var ticket in Model.Ticket)
+        {
+        <li>
+            @ticket.Name</li>
+                    }
+</ul>
 }
-    </ul>
-}
+
+
 
