@@ -19,14 +19,13 @@
 }
 else
 {
-    <ul>
+    
 
-        @foreach (var ticket in Model.Ticket)
+        foreach (var ticket in Model.Ticket)
         {
-        <li>
-            @ticket.Name</li>
+        <table class="table">
+            @ticket.Name</table>
                     }
-</ul>
 }
 
 
