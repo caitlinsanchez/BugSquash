@@ -9,5 +9,8 @@ namespace BugSquash.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public bool IsCompleted { get; set; }
+        public TicketType TicketType { get; set; }
+        public byte TicketTypeId { get; set; }
     }
 }

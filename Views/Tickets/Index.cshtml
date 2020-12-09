@@ -24,8 +24,23 @@ else
         foreach (var ticket in Model.Ticket)
         {
         <table class="table">
-            @ticket.Name</table>
-                    }
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Type</th>
+            </tr>
+            </thead>
+    <tbody>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type</th>
+            <th scope="row">@ticket.Name</th>
+
+        </tr></table>
+        }
 }
 
 

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BugSquash.Models;
 using BugSquash.ViewModels;
+using System.Configuration;
 
 namespace BugSquash.Controllers
 {
@@ -20,11 +21,20 @@ namespace BugSquash.Controllers
 
             };
 
+            var ticketType = new List<TicketType>
+            {   new TicketType { Name = "Defect" },
+                new TicketType { Name = "New Feature" },
+                new TicketType { Name = "Training" },
+
+            };
+
             var viewModel = new TicketViewModel
             {
                 Ticket = ticket,
             };
             return View(viewModel);
+
+            
         }
 
         [Route("tickets/type/{year}/{month:regex(\\d{2}):range(1, 12)}")]
