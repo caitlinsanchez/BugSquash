@@ -12,37 +12,37 @@ namespace BugSquash.Controllers
     public class TicketsController : Controller
     {
         // GET: Tickets
-        public ActionResult Index()
-        {
-            var ticket = new List<Ticket>
-            {   new Ticket { Name = "Defect" },
-                new Ticket { Name = "New Feature" },
-                new Ticket { Name = "Training" },
-
-            };
-
-            var ticketType = new List<TicketType>
-            {   new TicketType { Name = "Defect" },
-                new TicketType { Name = "New Feature" },
-                new TicketType { Name = "Training" },
-
-            };
-
-            var viewModel = new TicketViewModel
+       
+            private ApplicationDbContext _context;
+            public TicketsController()
             {
-                Ticket = ticket,
-            };
-            return View(viewModel);
+            _context = new ApplicationDbContext();
+            }
 
-            
-        }
-
-        [Route("tickets/type/{year}/{month:regex(\\d{2}):range(1, 12)}")]
-
-        public ActionResult ByTicketType(int year, int month)
+        protected override void Dispose(bool disposing)
         {
-            return Content(year + "/" + month);
+            _context.Dispose();
         }
+
+        public ViewResult Index()
+        {
+            var tickets = _context.Tickets.ToList();
+
+            return View(tickets);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var ticket = _context.Tickets.SingleOrDefault(c => c.Id == id);
+
+            if (ticket == null)
+                return HttpNotFound();
+
+            return View(ticket);
+        }
+
+
+
 
     }
 }

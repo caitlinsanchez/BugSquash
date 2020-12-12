@@ -1,47 +1,9 @@
-﻿@model BugSquash.ViewModels.TicketViewModel
+﻿
+@model System.Collections.Generic.List<BugSquash.Models.Ticket>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-@{
-
-    var className = Model.Ticket.Count > 5 ? "popular" : null;
-}
-
-
-@**<h2 class="popular">@Model.Ticket</h2>*@
-
-@if (Model.Ticket.Count == 0)
-{
-    <p>No tickets have been created.</p>
-}
-else
-{
-    
-
-        foreach (var ticket in Model.Ticket)
-        {
-        <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Description</th>
-                <th scope="col">Type</th>
-            </tr>
-            </thead>
-    <tbody>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Type</th>
-            <th scope="row">@ticket.Name</th>
-
-        </tr></table>
-        }
-}
-
-
+<h2>Index</h2>
 
