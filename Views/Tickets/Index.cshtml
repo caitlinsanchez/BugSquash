@@ -5,5 +5,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Tickets</h2>
 
+@if (!Model.Any())
+{
+    <p>You have not created any tickets yet.</p>
+}
+else
+{
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Ticket</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ticket in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(ticket.Name, "Details", "Tickets", new { id = ticket.Id }, null)</td>
+                <td>@ticket.TicketType</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+}

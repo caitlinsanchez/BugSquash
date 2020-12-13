@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 using System.Web.Mvc;
 using BugSquash.Models;
 using BugSquash.ViewModels;
@@ -26,7 +27,7 @@ namespace BugSquash.Controllers
 
         public ViewResult Index()
         {
-            var tickets = _context.Tickets.ToList();
+            var tickets = _context.Tickets.Include(c => c.TicketType).ToList();
 
             return View(tickets);
         }
