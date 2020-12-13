@@ -198,8 +198,27 @@
     <Compile Include="Migrations\202012120055021_ModelBacking.Designer.cs">
       <DependentUpon>202012120055021_ModelBacking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012130039032_SeedingTypeNames.cs" />
+    <Compile Include="Migrations\202012130039032_SeedingTypeNames.Designer.cs">
+      <DependentUpon>202012130039032_SeedingTypeNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012131648501_AddDescription.cs" />
+    <Compile Include="Migrations\202012131648501_AddDescription.Designer.cs">
+      <DependentUpon>202012131648501_AddDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012131746152_AddedModels.cs" />
+    <Compile Include="Migrations\202012131746152_AddedModels.Designer.cs">
+      <DependentUpon>202012131746152_AddedModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012131753131_NewClasses.cs" />
+    <Compile Include="Migrations\202012131753131_NewClasses.Designer.cs">
+      <DependentUpon>202012131753131_NewClasses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\TicketPriority.cs" />
+    <Compile Include="Models\TicketStatus.cs" />
     <Compile Include="Models\TicketType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -269,6 +288,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Tickets\Index.cshtml" />
+    <Content Include="Views\Tickets\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +324,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012120055021_ModelBacking.resx">
       <DependentUpon>202012120055021_ModelBacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012130039032_SeedingTypeNames.resx">
+      <DependentUpon>202012130039032_SeedingTypeNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131648501_AddDescription.resx">
+      <DependentUpon>202012131648501_AddDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131746152_AddedModels.resx">
+      <DependentUpon>202012131746152_AddedModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012131753131_NewClasses.resx">
+      <DependentUpon>202012131753131_NewClasses.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
