@@ -21,7 +21,9 @@ namespace BugSquash.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Ticket> Tickets { get; set; }
-
+        public DbSet<TicketType> TicketTypes { get; set; }
+        public DbSet<TicketPriority> TicketPriorities { get; set; }
+        public DbSet<TicketStatus> TicketStatus { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

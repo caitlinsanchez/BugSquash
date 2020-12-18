@@ -27,7 +27,7 @@ namespace BugSquash.Controllers
 
         public ViewResult Index()
         {
-            var tickets = _context.Tickets.Include(c => c.TicketType).ToList();
+            var tickets = _context.Tickets.Include(c => c.TicketStatus).ToList();
 
             return View(tickets);
         }
@@ -42,6 +42,13 @@ namespace BugSquash.Controllers
             return View(ticket);
         }
 
+        public ActionResult Create()
+        {
+            var tickets = _context.Tickets.ToList();
+            return View();
+        }
+
+        
 
 
 

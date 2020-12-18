@@ -14,7 +14,9 @@ namespace BugSquash.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public TicketType TicketType { get; set; }
+        public virtual TicketType TicketType { get; set; }
+        public virtual TicketStatus TicketStatus { get; set; }
+        public virtual TicketPriority TicketPriority { get; set; }
        
     }
 }
