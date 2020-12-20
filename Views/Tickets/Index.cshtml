@@ -27,7 +27,7 @@ else
         @foreach (var ticket in Model)
         {
         <tr>
-            <td>@Html.ActionLink(ticket.Name, "Details", "Tickets", new { id = ticket.Id }, null)</td>
+            <td>@Html.ActionLink(ticket.Name, "Edit", "Tickets", new { id = ticket.Id }, null)</td>
             <td>@Html.DisplayFor(modelItem => ticket.Description)</td>
             <td>@Html.DisplayFor(modelItem => ticket.TicketType)</td>
             <td>@Html.DisplayFor(modelItem => ticket.TicketStatus)</td>

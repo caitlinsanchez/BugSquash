@@ -238,6 +238,26 @@
     <Compile Include="Migrations\202012171608330_AddedDbSets.Designer.cs">
       <DependentUpon>202012171608330_AddedDbSets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012192147238_AddedIDs.cs" />
+    <Compile Include="Migrations\202012192147238_AddedIDs.Designer.cs">
+      <DependentUpon>202012192147238_AddedIDs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012192244010_SeededTicketPriorities.cs" />
+    <Compile Include="Migrations\202012192244010_SeededTicketPriorities.Designer.cs">
+      <DependentUpon>202012192244010_SeededTicketPriorities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012192245596_SeededTicketStatus.cs" />
+    <Compile Include="Migrations\202012192245596_SeededTicketStatus.Designer.cs">
+      <DependentUpon>202012192245596_SeededTicketStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012192316266_PopulateStatusPriority.cs" />
+    <Compile Include="Migrations\202012192316266_PopulateStatusPriority.Designer.cs">
+      <DependentUpon>202012192316266_PopulateStatusPriority.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012192328406_PriorityId.cs" />
+    <Compile Include="Migrations\202012192328406_PriorityId.Designer.cs">
+      <DependentUpon>202012192328406_PriorityId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Project.cs" />
@@ -249,7 +269,7 @@
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\NewTicketViewModel.cs" />
+    <Compile Include="ViewModels\TicketFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-custom.css" />
@@ -379,6 +399,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202012171608330_AddedDbSets.resx">
       <DependentUpon>202012171608330_AddedDbSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012192147238_AddedIDs.resx">
+      <DependentUpon>202012192147238_AddedIDs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012192244010_SeededTicketPriorities.resx">
+      <DependentUpon>202012192244010_SeededTicketPriorities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012192245596_SeededTicketStatus.resx">
+      <DependentUpon>202012192245596_SeededTicketStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012192316266_PopulateStatusPriority.resx">
+      <DependentUpon>202012192316266_PopulateStatusPriority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012192328406_PriorityId.resx">
+      <DependentUpon>202012192328406_PriorityId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

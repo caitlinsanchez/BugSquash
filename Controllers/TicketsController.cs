@@ -44,11 +44,46 @@ namespace BugSquash.Controllers
 
         public ActionResult Create()
         {
-            var tickets = _context.Tickets.ToList();
-            return View();
+            var ticketTypes = _context.TicketTypes.ToList();
+            var ticketStatus = _context.TicketStatus.ToList();
+            var ticketPriorities = _context.TicketPriorities.ToList();
+            var viewModel = new TicketFormViewModel
+            {
+                TicketTypes = ticketTypes,
+                TicketStatus = ticketStatus,
+                TicketPriorities = ticketPriorities
+
+            };
+            return View(viewModel);
         }
 
-        
+        [HttpPost]
+        public ActionResult Create(Ticket ticket)
+        {
+            _context.Tickets.Add(ticket);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Tickets");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var ticket = _context.Tickets.SingleOrDefault(t => t.Id == id);
+
+            if (ticket == null)
+                return HttpNotFound();
+
+            var viewModel = new TicketFormViewModel
+            {
+                Ticket = ticket,
+                TicketTypes = _context.TicketTypes.ToList(),
+                TicketStatus = _context.TicketStatus.ToList(),
+                TicketPriorities = _context.TicketPriorities.ToList()
+            };
+            return View("Create", viewModel);
+        }
+
+
 
 
 

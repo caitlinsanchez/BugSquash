@@ -8,11 +8,22 @@ namespace BugSquash.Models
 {
     public class Ticket
     {
-        
+        #region IDs
         public int Id { get; set; }
-        
+        [Display(Name = "Ticket Type")]
+        public int TicketTypeId { get; set; }
+        [Display(Name = "Ticket Status")]
+        public int TicketStatusId { get; set; }
+        [Display(Name = "Ticket Priority")]
+        public int TicketPriorityId { get; set; }
+
+        #endregion
+
         public string Name { get; set; }
         public string Description { get; set; }
+
+
+
 
         public virtual TicketType TicketType { get; set; }
         public virtual TicketStatus TicketStatus { get; set; }
