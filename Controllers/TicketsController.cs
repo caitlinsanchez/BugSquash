@@ -54,13 +54,24 @@ namespace BugSquash.Controllers
                 TicketPriorities = ticketPriorities
 
             };
-            return View(viewModel);
+            return View("Create", viewModel);
         }
 
         [HttpPost]
         public ActionResult Create(Ticket ticket)
         {
-            _context.Tickets.Add(ticket);
+            if (ticket.Id == 0)
+                _context.Tickets.Add(ticket);
+            else
+            {
+                var ticketInDb = _context.Tickets.Single(t => ticket.Id == ticket.Id);
+
+                ticketInDb.Name = ticket.Name;
+                ticketInDb.TicketTypeId = ticket.TicketTypeId;
+                ticketInDb.TicketStatusId = ticket.TicketStatusId;
+                ticketInDb.TicketPriorityId = ticket.TicketPriorityId;
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Tickets");
