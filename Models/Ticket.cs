@@ -18,7 +18,7 @@ namespace BugSquash.Models
         public int TicketPriorityId { get; set; }
 
         #endregion
-
+        [Required]
         public string Name { get; set; }
         public string Description { get; set; }
 
@@ -28,6 +28,7 @@ namespace BugSquash.Models
         public virtual TicketType TicketType { get; set; }
         public virtual TicketStatus TicketStatus { get; set; }
         public virtual TicketPriority TicketPriority { get; set; }
-       
+
+        
     }
 }

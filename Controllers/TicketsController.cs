@@ -42,6 +42,7 @@ namespace BugSquash.Controllers
             return View(ticket);
         }
 
+        // GET: Tickets/Create
         public ActionResult Create()
         {
             var ticketTypes = _context.TicketTypes.ToList();
@@ -49,6 +50,7 @@ namespace BugSquash.Controllers
             var ticketPriorities = _context.TicketPriorities.ToList();
             var viewModel = new TicketFormViewModel
             {
+                Ticket = new Ticket(),
                 TicketTypes = ticketTypes,
                 TicketStatus = ticketStatus,
                 TicketPriorities = ticketPriorities
@@ -56,12 +58,28 @@ namespace BugSquash.Controllers
             };
             return View("Create", viewModel);
         }
-
-        [HttpPost]
+        // POST: Tickets/Create
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Create(Ticket ticket)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new TicketFormViewModel
+                {
+                    Ticket = ticket,
+                    TicketTypes = _context.TicketTypes.ToList(),
+                    TicketStatus = _context.TicketStatus.ToList(),
+                    TicketPriorities = _context.TicketPriorities.ToList()
+                };
+
+                return View("Create", viewModel);
+            }
+
             if (ticket.Id == 0)
+            {
                 _context.Tickets.Add(ticket);
+            }
+
             else
             {
                 var ticketInDb = _context.Tickets.Single(t => ticket.Id == ticket.Id);
@@ -93,10 +111,5 @@ namespace BugSquash.Controllers
             };
             return View("Create", viewModel);
         }
-
-
-
-
-
     }
 }
