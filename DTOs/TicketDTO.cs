@@ -23,11 +23,12 @@ namespace BugSquash.DTOs
         public string Name { get; set; }
         public string Description { get; set; }
 
+        public TicketTypeDTO TicketType { get; set; }
+
+        public TicketStatusDTO TicketStatus { get; set; }
+
+        public TicketPriorityDTO TicketPriority { get; set; }
 
 
-
-        public virtual TicketType TicketType { get; set; }
-        public virtual TicketStatus TicketStatus { get; set; }
-        public virtual TicketPriority TicketPriority { get; set; }
     }
 }

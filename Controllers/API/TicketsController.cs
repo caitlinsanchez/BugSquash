@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -18,38 +19,45 @@ namespace BugSquash.Controllers.API
             _context = new ApplicationDbContext();
         }
         // GET /api/tickets
-        public IEnumerable<TicketDTO> GetTickets()
+        public IHttpActionResult GetTickets()
         {
-            return _context.Tickets.ToList().Select(Mapper.Map<Ticket, TicketDTO>);
+            var ticketDTOs = _context.Tickets
+                .Include(c => c.TicketType)
+                .ToList()
+                .Select(Mapper.Map<Ticket, TicketDTO>);
+
+            return Ok(ticketDTOs);
         }
 
         // GET /api/tickets/1
 
-        public TicketDTO GetTicket(int id)
+        public IHttpActionResult GetTicket(int id)
         {
             var ticket = _context.Tickets.SingleOrDefault(t => t.Id == id);
+            var ticketTypes = _context.TicketTypes.ToList().Select(Mapper.Map<TicketType>);
 
             if (ticket == null)
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
 
-            return Mapper.Map<Ticket, TicketDTO>(ticket);
+            return Ok(Mapper.Map<Ticket, TicketDTO>(ticket));
 
         }
 
         // POST /api/tickets
         [HttpPost]
-        public TicketDTO CreateTicket (TicketDTO ticketDTO)
+        public IHttpActionResult CreateTicket (TicketDTO ticketDTO, TicketTypeDTO ticketTypeDTO)
         {
             if (!ModelState.IsValid)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
+                return BadRequest();
 
             var ticket = Mapper.Map<TicketDTO, Ticket>(ticketDTO);
+            var ticketTypes = Mapper.Map<TicketTypeDTO, TicketType>(ticketTypeDTO);
             _context.Tickets.Add(ticket);
             _context.SaveChanges();
 
             ticketDTO.Id = ticket.Id;
 
-            return ticketDTO;
+            return Created(new Uri(Request.RequestUri + "/" + ticket.Id), ticketDTO);
 
         }
 

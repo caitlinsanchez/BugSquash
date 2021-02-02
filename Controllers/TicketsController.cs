@@ -27,9 +27,7 @@ namespace BugSquash.Controllers
 
         public ViewResult Index()
         {
-            var tickets = _context.Tickets.Include(c => c.TicketStatus).ToList();
-
-            return View(tickets);
+            return View();
         }
 
         public ActionResult Details(int id)

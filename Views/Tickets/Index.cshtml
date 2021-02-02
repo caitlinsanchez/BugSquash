@@ -7,13 +7,7 @@
 
 <h2>Tickets</h2>
 
-@if (!Model.Any())
-{
-    <p>You have not created any tickets yet.</p>
-}
-else
-{
-<table class="table table-bordered table-hover">
+<table id="tickets" class="table table-bordered table-hover">
     <thead>
         <tr>
             <th>@Html.DisplayName("Ticket")</th>
@@ -21,19 +15,66 @@ else
             <th>@Html.DisplayName("Type")</th>
             <th>@Html.DisplayName("Status")</th>
             <th>@Html.DisplayName("Priority")</th>
+            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var ticket in Model)
-        {
-        <tr>
-            <td>@Html.ActionLink(ticket.Name, "Edit", "Tickets", new { id = ticket.Id }, null)</td>
-            <td>@Html.DisplayFor(modelItem => ticket.Description)</td>
-            <td>@Html.DisplayFor(modelItem => ticket.TicketType)</td>
-            <td>@Html.DisplayFor(modelItem => ticket.TicketStatus)</td>
-            <td>@Html.DisplayFor(modelItem => ticket.TicketPriority)</td>
-        </tr>
-        }
     </tbody>
 </table>
-}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#tickets").DataTable({
+
+                ajax: {
+                    url: "/api/tickets",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, ticket) {
+                            return "<a href='/tickets/edit/" + ticket.id + "'>" + ticket.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "description"
+                        
+                    },
+                    {
+                        data: "ticketType.name"
+                    },
+                    {
+                        data: "ticketStatus.name"
+                    },
+                    {
+                        data: "ticketPriority.name"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-ticket-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+
+
+            });
+                
+            $("#tickets").on("click", ".js-delete", function () {
+                var button = $(this);        
+                    if (confirm("Are you sure you want to delete this ticket?")) {
+                        $.ajax({
+                            url: "/api/tickets/" + button.attr("data-ticket-id"),
+                            method: "DELETE",
+                            success: function () {
+                                button.parents("tr").remove();
+                            }
+                        });
+                    }
+                });  
+            });
+        </script>
+    }
