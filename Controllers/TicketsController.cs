@@ -25,11 +25,14 @@ namespace BugSquash.Controllers
             _context.Dispose();
         }
 
-        public ViewResult Index()
+        public ViewResult List()
         {
-            return View();
+            if (User.IsInRole(RoleName.CanManageTickets))
+                return View("List");
+                return View("ReadOnlyList");
         }
 
+        
         public ActionResult Details(int id)
         {
             var ticket = _context.Tickets.SingleOrDefault(c => c.Id == id);
@@ -41,6 +44,7 @@ namespace BugSquash.Controllers
         }
 
         // GET: Tickets/Create
+        [Authorize(Roles = RoleName.CanManageTickets)]
         public ActionResult Create()
         {
             var ticketTypes = _context.TicketTypes.ToList();
@@ -90,7 +94,7 @@ namespace BugSquash.Controllers
 
             _context.SaveChanges();
 
-            return RedirectToAction("Index", "Tickets");
+            return RedirectToAction("List", "Tickets");
         }
 
         public ActionResult Edit(int id)

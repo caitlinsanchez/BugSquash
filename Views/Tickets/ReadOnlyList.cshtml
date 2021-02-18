@@ -15,7 +15,6 @@
             <th>@Html.DisplayName("Type")</th>
             <th>@Html.DisplayName("Status")</th>
             <th>@Html.DisplayName("Priority")</th>
-            <th>Delete</th>
         </tr>
     </thead>
     <tbody>
@@ -34,10 +33,7 @@
                 },
                 columns: [
                     {
-                        data: "name",
-                        render: function (data, type, ticket) {
-                            return "<a href='/tickets/edit/" + ticket.id + "'>" + ticket.name + "</a>";
-                        }
+                        data: "name",                       
                     },
                     {
                         data: "description"
@@ -51,29 +47,14 @@
                     },
                     {
                         data: "ticketPriority.name"
-                    },
-                    {
-                        data: "id",
-                        render: function (data) {
-                            return "<button class='btn-link js-delete' data-ticket-id=" + data + ">Delete</button>";
-                        }
                     }
                 ]
 
 
             });
                 
-            $("#tickets").on("click", ".js-delete", function () {
-                var button = $(this);        
-                    if (confirm("Are you sure you want to delete this ticket?")) {
-                        $.ajax({
-                            url: "/api/tickets/" + button.attr("data-ticket-id"),
-                            method: "DELETE",
-                            success: function () {
-                                table.row(button.parents("tr")).remove().draw();
-                            }
-                        });
-                    }
+            
+                    
                 });  
             });
         </script>
