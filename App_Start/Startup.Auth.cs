@@ -54,9 +54,9 @@ namespace BugSquash
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "905503473600445",
+               appSecret: "f1210b91d09f619789f82ec9e3c083f5");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

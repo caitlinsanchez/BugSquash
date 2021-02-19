@@ -1,0 +1,51 @@
+﻿
+@model System.Collections.Generic.List<BugSquash.Models.Project>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Projects</h2>
+
+<table id="projects" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Project")</th>
+            <th>@Html.DisplayName("Description")</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+           var table = $("#projects").DataTable({
+
+                ajax: {
+                    url: "/api/projects",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                    },
+                    {
+                        data: "description"
+
+                    },
+                  
+                ]
+
+
+            });
+
+
+
+                });
+            });
+    </script>
+}

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BugSquash.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using BugSquash.Models.AccountViewModels;
 
 namespace BugSquash.Controllers
 {
