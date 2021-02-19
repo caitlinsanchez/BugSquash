@@ -27,7 +27,7 @@ namespace BugSquash.Controllers
 
         public ViewResult List()
         {
-            if (User.IsInRole(RoleName.CanManageProjects))
+             if (User.IsInRole(RoleName.CanManageProjects))
                 return View("List");
                 return View("ReadOnlyList");
         }

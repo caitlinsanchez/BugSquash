@@ -20,6 +20,8 @@ namespace BugSquash.App_Start
             Mapper.CreateMap<TicketStatusDTO, TicketStatus>();
             Mapper.CreateMap<TicketPriority, TicketPriorityDTO>();
             Mapper.CreateMap<TicketPriorityDTO, TicketPriority>();
+            Mapper.CreateMap<Project, ProjectDTO>();
+            Mapper.CreateMap<ProjectDTO, Project>();
         }
     }
 }

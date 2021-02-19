@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using BugSquash.Models;
 using BugSquash.DTOs;
 using AutoMapper;
-using System.Net;
 
 namespace BugSquash.Controllers.API
 {
@@ -20,7 +20,7 @@ namespace BugSquash.Controllers.API
         // GET /api/projects
         public IHttpActionResult GetProjects()
         {
-            var projectDTOs = _context.Projects              
+            var projectDTOs = _context.Projects
                 .ToList()
                 .Select(Mapper.Map<Project, ProjectDTO>);
 
@@ -32,7 +32,7 @@ namespace BugSquash.Controllers.API
         public IHttpActionResult GetProject(int id)
         {
             var project = _context.Projects.SingleOrDefault(t => t.Id == id);
-            
+
 
             if (project == null)
                 return NotFound();
