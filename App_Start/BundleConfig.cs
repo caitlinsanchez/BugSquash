@@ -12,9 +12,11 @@ namespace BugSquash
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/bootstrap.js",
                         "~/Scripts/bootbox.js",
-                        "~/Scripts/respond.js",
+                        "~/Scripts/respond.js",                      
                         "~/scripts/datatables/jquery.datatables.js",
-                        "~/scripts/datatables/datatables.bootstrap.js"));
+                        "~/scripts/datatables/datatables.bootstrap.js",
+                        "~/scripts/typeahead.bundle.js",
+                        "~/scripts/toastr.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -28,9 +30,13 @@ namespace BugSquash
          
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-custom.css",
+                      "~/Content/sidebar1.css",
+                      "~/Content/custom-scrollbar.css",
                       "~/Content/site.css",
-                      "~/Content/datatables/css/datatables.bootstrap.css"));
+                      "~/Content/typeahead.css",
+                      "~/Content/datatables/css/datatables.bootstrap.css",
+                      "~/Content/toastr.css"));
         }
     }
 }

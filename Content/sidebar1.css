@@ -1,0 +1,18 @@
+﻿.wrapper
+
+{
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #ff50a0;
+    color: #fff;
+    transition: all 0.3s;
+}
