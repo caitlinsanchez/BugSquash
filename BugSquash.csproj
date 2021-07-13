@@ -705,6 +705,7 @@
     <Compile Include="ViewModels\TicketFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Contact.html" />
     <Content Include="Content\bootstrap-custom.css" />
     <Content Include="Content\bootstrap-darkly.css" />
     <Content Include="Content\bootstrap-litera.css" />
